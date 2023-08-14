@@ -10,10 +10,10 @@ variable "pub_sub_2" {
 
 variable "private_sub_1" {
   type    = string
-  default = "10.0.3.0/24"
+  default = "10.0.101.0/24"
 }
 
 variable "private_sub_2" {
   type    = string
-  default = "10.0.4.0/24"
+  default = "10.0.102.0/24"
 }
