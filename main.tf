@@ -15,8 +15,9 @@ resource "aws_internet_gateway" "week_22_igw" {
 }
 
 resource "aws_subnet" "public_subnet_1" {
-  vpc_id     = aws_vpc.week_22_vpc.id
-  cidr_block = var.pub_sub_1
+  vpc_id            = aws_vpc.week_22_vpc.id
+  cidr_block        = var.pub_sub_1
+  availability_zone = "us-east-1a"
 
   tags = {
     Name = "public_subnet_1"
@@ -24,8 +25,9 @@ resource "aws_subnet" "public_subnet_1" {
 }
 
 resource "aws_subnet" "public_subnet_2" {
-  vpc_id     = aws_vpc.week_22_vpc.id
-  cidr_block = var.pub_sub_2
+  vpc_id            = aws_vpc.week_22_vpc.id
+  cidr_block        = var.pub_sub_2
+  availability_zone = "us-east-1b"
 
   tags = {
     Name = "public_subnet_2"
@@ -33,8 +35,9 @@ resource "aws_subnet" "public_subnet_2" {
 }
 
 resource "aws_subnet" "private_subnet_1" {
-  vpc_id     = aws_vpc.week_22_vpc.id
-  cidr_block = var.private_sub_1
+  vpc_id            = aws_vpc.week_22_vpc.id
+  cidr_block        = var.private_sub_1
+  availability_zone = "us-east-1c"
 
   tags = {
     Name = "private_subnet_1"
@@ -42,9 +45,41 @@ resource "aws_subnet" "private_subnet_1" {
 }
 
 resource "aws_subnet" "private_subnet_2" {
-  vpc_id     = aws_vpc.week_22_vpc.id
-  cidr_block = var.private_sub_2
+  vpc_id            = aws_vpc.week_22_vpc.id
+  cidr_block        = var.private_sub_2
+  availability_zone = "us-east-1d"
+
   tags = {
     Name = "private_subnet_2"
+  }
+}
+
+resource "aws_eip" "week_22_eip" {
+  domain = "vpc"
+}
+
+resource "aws_nat_gateway" "week_22_nat_gw" {
+  allocation_id = aws_eip.week_22_eip.id
+  subnet_id     = aws_subnet.public_subnet_1.id
+
+  tags = {
+    Name = "week_22_nat_gw"
+  }
+
+  # To ensure proper ordering, it is recommended to add an explicit dependency
+  # on the Internet Gateway for the VPC.
+  depends_on = [aws_internet_gateway.week_22_igw]
+}
+
+resource "aws_route_table" "public_rt" {
+  vpc_id = aws_vpc.week_22_vpc.id
+
+  route {
+    cidr_block = "0.0.0.0/0"
+    gateway_id = aws_internet_gateway.week_22_igw.id
+  }
+
+  tags = {
+    Name = "public_rt"
   }
 }
