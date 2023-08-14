@@ -16,7 +16,7 @@ resource "aws_internet_gateway" "week_22_igw" {
 
 resource "aws_subnet" "public_subnet_1" {
   vpc_id     = aws_vpc.week_22_vpc.id
-  cidr_block = var.private_sub_1
+  cidr_block = var.pub_sub_1
 
   tags = {
     Name = "public_subnet_1"
