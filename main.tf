@@ -4,18 +4,12 @@ module "vpc" {
   source = "./vpc"
 }
 
-module "ec2_web_server_1" {
+module "ec2_web_servers" {
   source = "./ec2"
 
-  subnets = module.vpc.public_subnet_1_id
+  public_subnet_1 = module.vpc.public_subnet_1_id
 
-  security_groups = [module.security_groups.security_group_http, module.security_groups.security_group_tls]
-}
-
-module "ec2_web_server_2" {
-  source = "./ec2"
-
-  subnets = module.vpc.public_subnet_2_id
+  public_subnet_2 = module.vpc.public_subnet_2_id
 
   security_groups = [module.security_groups.security_group_http, module.security_groups.security_group_tls]
 }
