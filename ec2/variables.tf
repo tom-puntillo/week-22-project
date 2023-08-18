@@ -15,7 +15,12 @@ variable "ami" {
     default = "ami-053b0d53c279acc90"
 }
 
-variable "subnets" {
+variable "public_subnet_1" {
+    type = string
+    description = "Valid subnets in which to deploy a server"
+}
+
+variable "public_subnet_2" {
     type = string
     description = "Valid subnets in which to deploy a server"
 }
