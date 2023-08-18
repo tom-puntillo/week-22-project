@@ -22,4 +22,6 @@ module "ec2_web_server_2" {
 
 module "security_groups" {
   source = "./security_groups"
+
+  vpc_id = module.vpc.vpc_id
 }

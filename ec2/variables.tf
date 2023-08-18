@@ -2,7 +2,7 @@
 
 variable "user_data" {
     type = string
-    default = "IyEvYmluL2Jhc2gKCmFwdCB1cGRhdGUgLXkKYXB0IHVwZ3JhZGUgLXkKYXB0IGluc3RhbGwgbmdpbngKc3lzdGVtY3RsIGVuYWJsZSBuZ2lueApzeXN0ZW1jdGwgc3RhcnQgbmdpbngK"
+    default = "IyEvYmluL2Jhc2gKCmFwdCB1cGRhdGUgLXkKYXB0IHVwZ3JhZGUgLXkKYXB0IGluc3RhbGwgbmdpbnggLXkKc3lzdGVtY3RsIGVuYWJsZSBuZ2lueApzeXN0ZW1jdGwgc3RhcnQgbmdpbngK"
 }
 
 variable "instance_type" {
