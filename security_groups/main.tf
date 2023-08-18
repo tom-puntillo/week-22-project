@@ -1,6 +1,7 @@
 resource "aws_security_group" "allow_http" {
   name        = "allow_http"
   description = "Allow HTTP inbound traffic"
+  vpc_id = var.vpc_id
 
   ingress {
     description      = "HTTP from Anywhere"
@@ -34,6 +35,7 @@ resource "aws_security_group" "allow_http" {
 resource "aws_security_group" "allow_tls" {
   name        = "allow_tls"
   description = "Allow TLS inbound traffic"
+  vpc_id = var.vpc_id
 
   ingress {
     description      = "TLS from VPC"
