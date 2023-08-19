@@ -19,3 +19,11 @@ module "security_groups" {
 
   vpc_id = module.vpc.vpc_id
 }
+
+module "mysql" {
+  source = "./mysql"
+
+  sg = module.security_groups.security_group_mysql
+
+  private_db_subnet = module.vpc.private_db_subnet
+}
