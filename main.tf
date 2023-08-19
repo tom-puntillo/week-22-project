@@ -25,5 +25,7 @@ module "mysql" {
 
   sg = module.security_groups.security_group_mysql
 
-  private_db_subnet = module.vpc.private_db_subnet
+  private_db_subnet_1 = module.vpc.private_db_subnet_1
+
+  private_db_subnet_2 = module.vpc.private_db_subnet_2
 }

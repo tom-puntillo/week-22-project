@@ -1,6 +1,11 @@
-variable "private_db_subnet" {
+variable "private_db_subnet_1" {
     type = string
-    description = "private subnet for the mysql instance"
+    description = "private subnet 1 for the mysql instance"
+}
+
+variable "private_db_subnet_2" {
+    type = string
+    description = "private subnet 2 for the mysql instance"
 }
 
 variable "sg" {
