@@ -5,10 +5,12 @@ resource "aws_db_subnet_group" "mysql_subnet_group"{
 
 resource "aws_db_instance" "mysql_db" {
     allocated_storage = var.allocation_size
+    apply_immediately = true
     db_subnet_group_name = aws_db_subnet_group.mysql_subnet_group.name
     engine = var.engine
     engine_version = var.engine_version
     instance_class = var.db_instance_class
+    skip_final_snapshot = true
     username = var.username
     password = var.password
     vpc_security_group_ids = [var.sg]
