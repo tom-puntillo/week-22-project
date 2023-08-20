@@ -1,6 +1,6 @@
 # ---security_groups main.tf
 
-# Create a security group named "allow_http" to allow HTTP inbound traffic
+# Create a security group named "allow_http" to allow HTTP inbound traffic.
 resource "aws_security_group" "allow_http" {
   name        = "allow_http"
   description = "Allow HTTP inbound traffic"
